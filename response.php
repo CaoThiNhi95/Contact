@@ -12,7 +12,9 @@ if (!$success) {
     die("Couldn't enter data: ".$mysqli->error);
 }
 
+require_once('send_form_email.php');
+
 echo "Thank You For Contacting Us ";
 
-$conn->close();
+$mysqli->close();
 ?>

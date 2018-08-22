@@ -1,0 +1,58 @@
+<?php
+    $name = $_POST['name'];
+    $name_hiragana = $_POST['name_hiragana'];
+    $address_province = $_POST['address_province'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>登録確認画面</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				
+			</div>
+			<div class="col-md-6">
+				<h3>登録確認画面</h3>
+				<form method="post" action="signin_response.php">
+				  	<div class="form-group">
+				    	<label>名前:		<?php echo $name; ?></label>
+				 	</div>
+				 	<div class="form-group">
+				    	<label>ふりがな:		<?php echo $name_hiragana; ?></label>
+				  	</div>
+				  	<div class="form-group">
+				    	<label>都道府県:		<?php echo $address_province; ?></label>
+				  	</div>
+				  	<div class="form-group">
+				    	<label>住所:		<?php echo $address; ?></label>
+				  	</div>
+				  	<div class="form-group">
+				    	<label>メールアドレス:	<?php echo $email; ?></label>
+				  	</div>
+				  	<div class="form-group">
+				    	<label>パスワード:	<?php echo $password; ?></label>
+				  	</div>
+				  	<input type="submit" class = "tn btn-success button1" name="btn_submit" value="登録">
+				  	<input type="button" class = "tn btn-success button2"  value="修正" onclick="history.back()">
+
+				  	<input type="hidden" name="name" value="<?php echo $name; ?>">
+					<input type="hidden" name="name_hiragana" value="<?php echo $name_hiragana; ?>">
+					<input type="hidden" name="address_province" value="<?php echo $address_province; ?>">
+					<input type="hidden" name="address" value="<?php echo $address; ?>">
+					<input type="hidden" name="email" value="<?php echo $email; ?>">
+					<input type="hidden" name="password" value="<?php echo $password; ?>">
+				</form>
+			</div>
+		</div>	
+	</div>	
+</body>
+</html>
