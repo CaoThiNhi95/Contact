@@ -14,7 +14,7 @@
 
 ##Turn on MAMP 
 
-##ttp://localhost:8888/contact
+##http://localhost:8888/contact
 
 # Signin using PHP, MySQL
 

@@ -4,7 +4,6 @@ if($_POST["btn_submit"]) {
 
     extract($_POST);
 
-    if(isset($_POST['name'])){
         if(!isset($_POST['name']) || !isset($_POST['name_hiragana']) || !isset($_POST['address_province'])|| !isset($_POST['address']) || !isset($_POST['email']) || !isset($_POST['password']) ) {
             die('We are sorry, please input to form');
         }
@@ -16,17 +15,39 @@ if($_POST["btn_submit"]) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql2 = "INSERT INTO menber (name, name_hiragana, address_province, address, email, password) VALUES ('". $name . "','" . $name_hiragana ."','" . $address_province . "','" . $address ."','" . $email ."','" . md5($password) ."')";
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE) or die ('Error connect');
+        mysqli_set_charset($conn, "utf8");
 
-        $success = $mysqli->query($sql2);
-
-        if(!$success){
-            die("Couldn't enter data: ".$mysqli->error);
+        // Kiểm tra email có bị trùng hay không
+        $sql = "SELECT * FROM member WHERE email = '$email'";
+          
+        // Thực thi câu truy vấn
+        $result = mysqli_query($conn, $sql);
+          
+        // Nếu kết quả trả về lớn hơn 1 thì nghĩa là username hoặc email đã tồn tại trong CSDL
+        if (mysqli_num_rows($result) > 0)
+        {
+            // Sử dụng javascript để thông báo
+            echo '<script language="javascript">alert("Email exist"); window.location="register.php";</script>';
+              
+            // Dừng chương trình
+            die ();
         }
         else {
-            echo "会員登録ありがとうございました!";
+            // Ngược lại thì thêm bình thường
+            $sql2 = "INSERT INTO menber (name, name_hiragana, address_province, address, email, password) VALUES ('". $name . "','" . $name_hiragana ."','" . $address_province . "','" . $address ."','" . $email ."','" . md5($password) ."')";
+
+            $success = $mysqli->query($sql2);
+
+            if(!$success){
+                die("Couldn't enter data: ".$mysqli->error);
+            }
+            else {
+                echo "会員登録ありがとうございました!";
+            }
         }
-    }
+
     $mysqli->close();
+    $conn->close();
 }
 ?>
