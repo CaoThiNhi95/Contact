@@ -15,14 +15,12 @@ if($_POST["btn_submit"]) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE) or die ('Error connect');
-        mysqli_set_charset($conn, "utf8");
 
         // Kiểm tra email có bị trùng hay không
         $sql = "SELECT * FROM member WHERE email = '$email'";
           
         // Thực thi câu truy vấn
-        $result = mysqli_query($conn, $sql);
+        $result = $mysqli->query($sql);
           
         // Nếu kết quả trả về lớn hơn 1 thì nghĩa là username hoặc email đã tồn tại trong CSDL
         if (mysqli_num_rows($result) > 0)
@@ -48,6 +46,5 @@ if($_POST["btn_submit"]) {
         }
 
     $mysqli->close();
-    $conn->close();
 }
 ?>
