@@ -26,7 +26,7 @@ if($_POST["btn_submit"]) {
         if (mysqli_num_rows($result) > 0)
         {
             // Sử dụng javascript để thông báo
-            echo '<script language="javascript">alert("Email exist"); window.location="register.php";</script>';
+            echo '<script language="javascript">alert("Email exist"); window.location="signin.php";</script>';
               
             // Dừng chương trình
             die ();
