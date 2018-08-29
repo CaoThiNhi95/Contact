@@ -1,10 +1,27 @@
 <?php
-    $name = $_POST['name'];
-    $name_hiragana = $_POST['name_hiragana'];
-    $address_province = $_POST['address_province'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $name = test_input($_POST['name']);
+    $name_hiragana = test_input($_POST['name_hiragana']);
+    $address_province = test_input($_POST['address_province']);
+    $address = test_input($_POST['address']);
+    $email = test_input($_POST['email']);
+    $password = test_input($_POST['password']);
+
+
+    function test_input($data) {
+	  $data = trim($data);
+	  $data = stripslashes($data);
+	  $data = htmlspecialchars($data);
+	  return $data;
+	}
+			// Lấy thông tin
+            // Để an toàn thì ta dùng hàm mssql_escape_string để
+            // chống hack sql injection
+            // $name   = isset($_POST['name']) ? mysqli_escape_string($_POST['name']) : '';
+            // $name_hiragana   = isset($_POST['username']) ? mysqli_escape_string($_POST['name_hiragana']) : '';
+            // $password   = isset($_POST['password']) ? mysqli_escape_string($_POST['password']) : '';
+            // $email      = isset($_POST['email'])    ? mysqli_escape_string($_POST['email']) : '';
+            // $address_province      = isset($_POST['address_province'])    ? mysqli_escape_string($_POST['address_province']) : '';
+            // $address      = isset($_POST['address'])    ? mysqli_escape_string($_POST['address']) : '';
 ?>
 
 <!DOCTYPE html>
