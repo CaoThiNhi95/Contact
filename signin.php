@@ -1,5 +1,8 @@
-
-
+<?php
+    require('config.php');
+    $sql = "SELECT * FROM menber";
+    $query=mysqli_query($mysqli, $sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,27 +63,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        define (DB_USER, "root");
-                        define (DB_PASSWORD, "root");
-                        define (DB_DATABASE, "contact");
-                        define (DB_HOST, "localhost:8889");
 
-
-                        $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die("Connection failed: " . $mysqli->connect_error);
-                        mysqli_query($mysqli,"SET NAMES 'UTF8'");
-                        $sql = "SELECT * FROM menber order by id DESC";
-                        $query=mysqli_query($sql);
-                        if(mysql_num_rows($query) == 0)
-                        {
-                        echo "<tr><td colspan='5' align='center'>Chua co username nao</td></tr>";
-                        }
+                    <?php 
+                        if(mysqli_num_rows($query) == 0)
+                            {
+                            echo "<tr><td colspan='6' align='center'>Chua co username nao</td></tr>";
+                            }else{
                         while($row=mysqli_fetch_array($query)){
+                    ?>
                         <tr>
-                            echo "<td> $row['id']</td>";
-                            echo"<td>  $row['name']</td>";
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['name_hiragana']); ?></td>
+                            <td><?php echo htmlspecialchars($row['address_province']); ?></td>
+                            <td><?php echo htmlspecialchars($row['address']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
                         </tr>
-                        }
+                    <?php
+                        }}
                     ?>
                 </tbody>
             </table>
