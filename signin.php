@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +46,45 @@
                 </form>
             </div>
         </div>  
+        <div>
+            <h1>List Users</h1>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名前</th>
+                        <th>ふりがな</th>
+                        <th>都道府県</th>
+                        <th>住所</th>
+                        <th>メールアドレス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        define (DB_USER, "root");
+                        define (DB_PASSWORD, "root");
+                        define (DB_DATABASE, "contact");
+                        define (DB_HOST, "localhost:8889");
+
+
+                        $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die("Connection failed: " . $mysqli->connect_error);
+                        mysqli_query($mysqli,"SET NAMES 'UTF8'");
+                        $sql = "SELECT * FROM menber order by id DESC";
+                        $query=mysqli_query($sql);
+                        if(mysql_num_rows($query) == 0)
+                        {
+                        echo "<tr><td colspan='5' align='center'>Chua co username nao</td></tr>";
+                        }
+                        while($row=mysqli_fetch_array($query)){
+                        <tr>
+                            echo "<td> $row['id']</td>";
+                            echo"<td>  $row['name']</td>";
+                        </tr>
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

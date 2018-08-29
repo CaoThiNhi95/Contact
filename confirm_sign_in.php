@@ -13,16 +13,8 @@
 	  $data = htmlspecialchars($data);
 	  return $data;
 	}
-			// Lấy thông tin
-            // Để an toàn thì ta dùng hàm mssql_escape_string để
-            // chống hack sql injection
-            // $name   = isset($_POST['name']) ? mysqli_escape_string($_POST['name']) : '';
-            // $name_hiragana   = isset($_POST['username']) ? mysqli_escape_string($_POST['name_hiragana']) : '';
-            // $password   = isset($_POST['password']) ? mysqli_escape_string($_POST['password']) : '';
-            // $email      = isset($_POST['email'])    ? mysqli_escape_string($_POST['email']) : '';
-            // $address_province      = isset($_POST['address_province'])    ? mysqli_escape_string($_POST['address_province']) : '';
-            // $address      = isset($_POST['address'])    ? mysqli_escape_string($_POST['address']) : '';
 ?>
+
 
 <!DOCTYPE html>
 <html>
