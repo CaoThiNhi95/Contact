@@ -39,6 +39,8 @@
 
         INSERT INTO `address` (`id`, `address_province`) VALUES (NULL, '関西'), (NULL, '中国'), (NULL, '北海道'), (NULL, '四国'), (NULL, '沖縄'), (NULL, '九州'), (NULL, '関東'), (NULL, '中部'), (NULL, '東北');
 
+        
+
 ##copy folder  => htdoc/ folder signin
 
 ##Turn on MAMP 
