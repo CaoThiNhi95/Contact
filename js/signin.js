@@ -14,13 +14,11 @@ $(document).ready(function(){
         },
         messages: {
             email: {
-                required: "このフィールドは必須です。",
                 maxlength: $.validator.format( "{0} 文字以内で入力してください。" ),
                 email: "有効なEメールアドレスを入力してください。",
                 validateEmail: "有効なEメールアドレスを入力してください",
             },
             password: {
-                required: "このフィールドは必須です。",
                 maxlength: $.validator.format( "{0} 文字以内で入力してください。" ),
                 minlength: $.validator.format("{0} 文字以上で入力してください。")
             }
