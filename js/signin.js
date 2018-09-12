@@ -43,7 +43,7 @@ $(document).ready(function(){
         var email = $('#email').val();
         if(validator.element('#email')){
             $.get("check_email_exist.php",{email: email}, function(data){
-                if (data === "yes"){
+                if (data === "true"){
                     $('#check-mail').html("このEメールアドレスが存在しました！");
                     $('#check-mail').css("color", "red");
                     $('#submit-signup').attr("disabled", true);

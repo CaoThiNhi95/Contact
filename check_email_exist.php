@@ -8,11 +8,11 @@
             // Nếu kết quả trả về lớn hơn 1 thì nghĩa là email đã tồn tại trong CSDL
         if (mysqli_num_rows($result) > 0){
             // echo "このEメールアドレスが存在しました！";
-            echo "yes";
+            echo "true";
         }
         else {
             // echo "このEメールアドレスはいいです！";
-            echo "no";
+            echo "false";
         }
     }
 ?>
